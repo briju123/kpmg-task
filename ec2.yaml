@@ -1,0 +1,20 @@
+---
+- name: Ansible EC2 instance Launch module demo
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Provision ec2 instance
+      ec2:
+        key_name: ec2_ansible
+        instance_type: t2.micro
+        image: ami-0d6fb2916ee0ab9fe
+        group: default
+        wait: yes
+        count: 1
+        vpc_subnet_id: default
+        assign_public_ip: yes
+        aws_region: southeast-2
+        instance_tags:
+          Name: amibackup
+        aws_access_key: AKIA3U2FLAKZ2DLIBOKI
+        aws_secret_key: FrxOODr8Xr0265Xd2POdL8uZT24gS1w2Jw7bI0nRi
