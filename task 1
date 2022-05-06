@@ -1,0 +1,33 @@
+locals {
+  admin_username = "Ragesh"
+  account_id     = 800619954867
+}
+
+provider "aws" {
+  region  = var.aws_region
+  profile = var.aws_cli_profile
+}
+
+resource "aws_iam_user" "lb" {
+  name = "ragesh"
+  path = "/system/"
+
+  tags = {
+    tag-key = "tag-value"
+  }
+}
+
+data "aws_caller_identity" "current" {}
+
+data "aws_iam_policy_document" "ssm_key" {
+  statement {
+    sid       = "Enable IAM User Permissions"
+    effect    = "Allow"
+    actions   = ["kms:Encrypt"]
+    resources = ["*"]
+
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::${local.account_id}:root"]
+    }
+  }
