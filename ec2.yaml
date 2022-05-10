@@ -16,5 +16,3 @@
         aws_region: southeast-2
         instance_tags:
           Name: amibackup
-        aws_access_key: AKIA3U2FLAKZ2DLIBOKI
-        aws_secret_key: FrxOODr8Xr0265Xd2POdL8uZT24gS1w2Jw7bI0nRi
